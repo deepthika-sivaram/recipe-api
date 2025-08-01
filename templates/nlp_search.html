@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Recommender</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8f9fa; }
+    .btn-green { background-color: #28a745; color: white; }
+    .btn-green:hover { background-color: #218838; }
+    .btn-blue { background-color: #007bff; color: white; }
+    .btn-blue:hover { background-color: #0056b3; }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <div class="text-center mb-4">
+      <h1 class="display-5 fw-bold text-success">Find Your Recipe</h1>
+      <p class="lead">Search using tags or pictures or describe what you're craving.</p>
+    </div>
+
+    <!-- Button to CV Task -->
+    <div class="text-center mb-4">
+      <a href="{{ url_for('cv_upload') }}" class="btn btn-blue">Upload Pictures</a>
+    </div>
+    {% if tags %}
+      <div class="alert alert-info text-center">
+        <strong>Detected Ingredients:</strong> {{ tags }}
+      </div>
+    {% endif %}
+    <form method="POST" action="/recommend" class="card p-4 shadow-sm">
+      <input type="hidden" name="tags" value="{{ tags|default('') }}">
+      <div class="mb-3">
+        <label for="input" class="form-label">Describe your recipe:</label>
+        <textarea name="input" class="form-control" rows="3" required placeholder="e.g. {{ tags }}">{{ tags|default('') }}</textarea>
+      </div>
+      <button type="submit" class="btn btn-green">Search</button>
+    </form>
+  </div>
+</body>
+</html>

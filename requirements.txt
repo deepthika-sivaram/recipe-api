@@ -1,0 +1,6 @@
+flask
+torch
+pandas
+spacy
+sentence-transformers
+huggingface_hub

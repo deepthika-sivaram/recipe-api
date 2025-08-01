@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ recipe.name }}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8f9fa; }
+    .btn-green { background-color: #28a745; color: white; }
+    .btn-green:hover { background-color: #218838; }
+    .section-title { margin-top: 1.5rem; font-weight: bold; color: #343a40; }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h1 class="card-title text-success">{{ recipe.name }}</h1>
+        <p><strong>Rating:</strong> ⭐ {{ recipe.rating }}</p>
+
+        {% if recipe.description %}
+          <p class="section-title">Description:</p>
+          <p>{{ recipe.description }}</p>
+        {% endif %}
+
+        {% if recipe.minutes %}
+          <p class="section-title">Time:</p>
+          <p>{{ recipe.minutes }} minutes</p>
+        {% endif %}
+
+        {% if recipe.ingredients %}
+          <p class="section-title">Ingredients:</p>
+          <ul>
+            {% for item in recipe.ingredients.strip("[]").split(',') %}
+              <li>{{ item.strip(" '\"") }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if recipe.steps %}
+          <p class="section-title">Steps:</p>
+          <ol>
+            {% for step in recipe.steps %}
+              <li>{{ step }}</li>
+            {% endfor %}
+          </ol>
+        {% else %}
+          <p><em>No steps available.</em></p>
+        {% endif %}
+        <a href="{{ url_for('recommend') }}?input={{ request.args.get('input', '') }}&tags={{ request.args.get('tags', '') }}" class="btn btn-outline-secondary mt-3">← Back to results</a>
+  </div>
+    </div>
+  </div>
+</body>
+</html>
