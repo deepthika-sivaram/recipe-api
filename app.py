@@ -118,4 +118,5 @@ def recipe_detail(recipe_id):
     return render_template('recipe_detail.html', recipe=recipe, back_url=request.referrer or '/')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Render provides PORT env variable
+    app.run(debug=False, host="0.0.0.0", port=port)
