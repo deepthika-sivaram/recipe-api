@@ -24,7 +24,7 @@ if not os.path.exists(model_dir):
 
 # === INIT FLASK ===
 app = Flask(__name__)
-
+model_dir = "bert_recipe_model/"+model_dir
 # === LOAD MODELS AND DATA ===
 print("📦 Loading model and data...")
 model = SentenceTransformer(model_dir)
