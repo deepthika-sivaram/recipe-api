@@ -28,7 +28,7 @@ model_dir = "bert_recipe_model/"+model_dir
 # === LOAD MODELS AND DATA ===
 print("📦 Loading model and data...")
 model = SentenceTransformer(model_dir)
-recipe_embeddings = torch.load(embedding_path, weights_only=True)
+recipe_embeddings = torch.load(embedding_path, map_location=torch.device('cpu'), weights_only=True)
 
 recipes = pd.read_csv(recipes_path)
 interactions = pd.read_csv(interactions_path)
