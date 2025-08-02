@@ -11,10 +11,10 @@ REPO_ID = "dsivaram/recipe-api"  # REPLACE THIS with your actual Hugging Face da
 # === DOWNLOAD DATA & MODEL FROM HUGGINGFACE ===
 print("🔄 Downloading data from Hugging Face...")
 
-recipes_path = hf_hub_download(repo_id=REPO_ID, filename="RAW_recipes.csv")
-interactions_path = hf_hub_download(repo_id=REPO_ID, filename="RAW_interactions.csv")
-embeddings_path = hf_hub_download(repo_id=REPO_ID, filename="recipe_embeddings.pt")
-model_zip_path = hf_hub_download(repo_id=REPO_ID, filename="bert_recipe_model.zip")
+recipes_path = hf_hub_download(repo_id=repo_id, filename="RAW_recipes.csv", repo_type="dataset")
+interactions_path = hf_hub_download(repo_id=repo_id, filename="RAW_interactions.csv", repo_type="dataset")
+embedding_path = hf_hub_download(repo_id=repo_id, filename="recipe_embeddings.pt", repo_type="dataset")
+model_zip_path = hf_hub_download(repo_id=repo_id, filename="bert_recipe_model.zip", repo_type="dataset")
 
 # === EXTRACT MODEL ===
 model_dir = "bert_recipe_model"
