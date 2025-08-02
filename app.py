@@ -6,7 +6,7 @@ from torch.nn.functional import cosine_similarity
 import torch, pandas as pd, spacy, os, ast, zipfile
 
 # === CONFIGURATION ===
-REPO_ID = "https://huggingface.co/datasets/dsivaram/recipe-api"  # REPLACE THIS with your actual Hugging Face dataset repo ID
+REPO_ID = "dsivaram/recipe-api"  # REPLACE THIS with your actual Hugging Face dataset repo ID
 
 # === DOWNLOAD DATA & MODEL FROM HUGGINGFACE ===
 print("🔄 Downloading data from Hugging Face...")
